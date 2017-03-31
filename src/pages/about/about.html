@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Create Game
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentMenu($event)" >
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+      
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>Saved Games</ion-card-header>
+    <ion-list *ngIf='b==false || b ==null'>
+      <ion-item *ngFor="let game of games" (click)='gameClicked(game)' >
+        <div item-left>{{game.title}}</div>
+        <div item-right>Players {{game.players.length}} </div>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-list *ngIf='b'>
+
+      <ion-item *ngFor='let game of games;let i = index;trackBy: customTrackBy'>
+        <ion-label> {{game.title}}</ion-label>
+        <ion-checkbox checked=false (click)="selectGame(game)" color='danger' ></ion-checkbox>
+      </ion-item>
+
+    </ion-list>
+
+  </ion-card>
+
+  <ion-card *ngIf='b'>
+
+    <button ion-button block (click)="delete()" color='danger' >Delete</button>
+
+  </ion-card>
+
+</ion-content>

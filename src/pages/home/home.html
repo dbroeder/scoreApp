@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Player Profile</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openPlayerMenu($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Players:</h2>
+  <ion-list >
+    <ion-item *ngFor = "let player of players" >
+      <div item-left> {{player.name}}</div>
+      <div item-right>Wins: {{player.wins}}</div>
+    </ion-item>
+  </ion-list>
+</ion-content>
